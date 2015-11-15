@@ -2,12 +2,10 @@ title: 简明 Vim 练级攻略
 date: 2015-11-15 15:36:53
 tags: vim
 categories: Docs
-description: 
+description: Introduce The Vim Simply !
 feature: vim.jpg
 toc: true
 ---
-
-本文转自haoel的酷壳：http://coolshell.cn/articles/5426.html
 
 你想以最快的速度学习人类史上最好的文本编辑器VIM吗？你先得懂得如何在VIM幸存下来，然后一点一点地学习各种戏法。
 [Vim](http://www.vim.org/) the Six Billion Dollar editor
@@ -292,3 +290,6 @@ __ 分屏: :split 和 vsplit. __
 
 </br>
 <p align="center">——————————正文结束——————————</p>
+
+本文转自haoel的酷壳：http://coolshell.cn/articles/5426.html
+
