@@ -291,5 +291,5 @@ __ 分屏: :split 和 vsplit. __
 </br>
 <p align="center">——————————正文结束——————————</p>
 
-本文转自haoel的酷壳：http://coolshell.cn/articles/5426.html
+本文转自酷壳：http://coolshell.cn/articles/5426.html
 

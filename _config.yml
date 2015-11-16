@@ -3,9 +3,9 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Coderpan
-subtitle: 码畔—Coderpan
-description: 码畔－Coderpan
+title: 码畔 - Coderpan
+subtitle: 码畔 - Coderpan
+description: 码畔 - Coderpan
 author: Coderpan
 language: Simplified Chinese
 timezone: Asia/Shanghai
@@ -13,7 +13,7 @@ favicon: favicon.ico
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://localhost:4000
+url: http://coderpan.github.io
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
