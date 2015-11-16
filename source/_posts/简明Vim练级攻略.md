@@ -3,7 +3,7 @@ date: 2015-11-15 15:36:53
 tags: vim
 categories: Docs
 description: Introduce The Vim Simply !
-feature: vim.jpg
+feature: vim2.jpg
 toc: true
 ---
 
@@ -13,8 +13,6 @@ toc: true
 
 学习 vim 并且其会成为你最后一个使用的文本编辑器。没有比这个更好的文本编辑器了，非常地难学，但是却不可思议地好用。
 
-<!-- more -->
-
 我建议下面这四个步骤：
 1.  存活
 2.  感觉良好
@@ -22,6 +20,8 @@ toc: true
 4.  使用VIM的超能力
 
 当你走完这篇文章，你会成为一个vim的 superstar。
+
+<!-- more -->
 
 在开始学习以前，我需要给你一些警告：
 
