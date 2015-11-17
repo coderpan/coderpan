@@ -17,8 +17,6 @@ $ npm install hexo-tag-bootstrap --save
 
 然后就可以像使用其他 hexo tag plugins 一样使用这些 Bootstrap tag plugins 了。
 
-<!-- more -->
-
 ## 文本颜色 ##
 
 插入一段文本，并用特殊的颜色高亮它。
@@ -32,6 +30,8 @@ $ npm install hexo-tag-bootstrap --save
 ```
 
 ### 示例 ###
+
+<!-- more -->
 
 ```
 {% textcolor muted %}Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.{% endtextcolor %}

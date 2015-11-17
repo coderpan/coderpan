@@ -269,9 +269,9 @@ a.inline-ref:hover {
    ========================================================================== */
 
 blockquote {
-  border-left:5px solid #cccccc;
+  border-left:4px solid #cccccc;
   font-size: 1em;
-  background-color: #fff;
+  background-color: #fee;
 }
 
 blockquote p, blockquote ol, blockquote ul, blockquote li, .slogan{
@@ -457,8 +457,9 @@ h4 {
 .page h3.title div.date {
   /* position:absolute; */
   /* right:5px; */
+  margin-top:7px;
   float: right;
-  font-size:0.7em;
+  font-size:0.6em;
   color: #777;
 }
 
