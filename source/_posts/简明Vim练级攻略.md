@@ -1,4 +1,4 @@
-title: 简明 Vim 练级攻略
+title: 简明Vim练级攻略
 date: 2015-11-15 15:36:53
 tags: vim
 categories: Docs
