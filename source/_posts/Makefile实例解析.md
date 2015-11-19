@@ -1,7 +1,7 @@
 title: Makefile实例解析
 date: 2015-11-18 17:56:56
-tags: makefile
-categories: Docs
+tags: Makefile
+categories: C/C++
 description: Introduce The Makefile Simply !
 feature: Makefile.jpg
 toc: true
