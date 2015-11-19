@@ -13,8 +13,7 @@ toc: true
 
 > {% textcolor info %}本文适合对 Makefile 接触不多的同学阅读，其中涉及到的知识面比较窄，后面会慢慢完善！{% endtextcolor %}
 
-
-## 项目公共Makefile ##
+## 公共 Makefile ##
 
 以下是我选取的项目公共makefile文件，讲述将以注释的形式穿插在代码中，过程中会顺带讲些与makefile相关的内容：
 
@@ -103,8 +102,8 @@ copyfile = if test -z "$(APP)" || test -z "$(TARGET)"; then \
 
 #phony单词翻译是“假的，赝品"，顾名思义，跟在后面的都是假的目标，只是一个标识
 #如果不加phony的话，那么就把clean当成了目标文件，紧跟其后的"："后面并没有依赖文件，
-#就会导致每次make clean都会提示目标是最新的，无法清除文件,反之，如果我们加上了,这次额标识
-#就不会当成目标文件，也就可以清除文件了。
+#如果目录下正好有一个叫clean的文件，就会导致每次make clean都会提示目标是最新的，
+#无法清除文件,反之，如果我们加上了,clean就不会当成目标文件，也就可以清除文件了。
 .PHONY: all clean release
 
 #为什么makefile里面都会有一个all呢？因为默认执行make命令的时候，其实就是make all。
@@ -166,7 +165,7 @@ endif
     $(CC) -m$(MFLAGS) $(CFLAGS) $(INCLUDE) -o $@ -c $<
 ```
 
-## 子服务Makefile
+## 子服务 Makefile
 上面讲完公共makefile之后，这里将附上子服务的makefile，看是如何引用公共makefile的，
 这样分开之后的好处不言而喻，每增加一个子服务只需要在外层makefile定义一些独有的变量即可：
 
@@ -183,7 +182,9 @@ LIB     += -lutil
 TARGET := test
 
 include ${TOPDIR}/makefile
+
 ```
 
-</br>
-#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;转载本站文章请注明作者和出处 __码畔-coderpan__，请勿用于任何商业用途
+<font color=#ff0000 size=4 face="黑体">
+转载本站文章请注明作者和出处 <u>__码畔-coderpan__</u>，请勿用于任何商业用途
+</font>
