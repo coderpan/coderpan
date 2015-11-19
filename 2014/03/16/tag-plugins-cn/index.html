@@ -105,21 +105,20 @@
 
 	<!-- content -->
 	<div class="mypage">		
-	  
-		 <div class="alert alert-success description">
-			<i class="fa fa-info-circle"></i> <p>Introduce tag plugins in freemind.</p>
-			
-		 </div> <!-- alert -->
-	  		
+	  <!-- % if (item.description) { % -->
+		 <!-- div class="alert alert-success description" -->
+			<!-- i class="fa fa-info-circle"></i --> <!-- %- markdown(item.description) % -->
+		 <!-- /div --> <!-- alert -->
+	  <!-- % } % -->		
 
 	  <p>Freemind 主题提供了丰富的 tag plugins，以充分利用 Bootstrap 的威力。</p>
 <p>在使用这些 tag plugins 之前，你需要先安装 <a href="https://github.com/wzpan/hexo-tag-bootstrap" target="_blank" rel="external">hexo-tag-bootstrap</a> 。在你的 Hexo 博客目录，执行下列命令：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm <span class="operator"><span class="keyword">install</span> hexo-tag-bootstrap <span class="comment">--save</span></span></span><br></pre></td></tr></table></figure>
 <p>然后就可以像使用其他 hexo tag plugins 一样使用这些 Bootstrap tag plugins 了。</p>
-<a id="more"></a>
 <h2 id="文本颜色">文本颜色</h2><p>插入一段文本，并用特殊的颜色高亮它。</p>
 <h3 id="语法">语法</h3><figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% textcolor [style] <span class="variable">%&#125;</span></span><br><span class="line">  <span class="keyword">text</span> <span class="keyword">string</span></span><br><span class="line">&#123;% endtextcolor <span class="variable">%&#125;</span></span><br></pre></td></tr></table></figure>
-<h3 id="示例">示例</h3><figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;% textcolor muted <span class="variable">%&#125;</span>Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.&#123;% endtextcolor <span class="variable">%&#125;</span></span><br><span class="line"></span><br><span class="line">&#123;% textcolor primary <span class="variable">%&#125;</span>Nullam id dolor id nibh ultricies vehicula ut id elit.&#123;% endtextcolor <span class="variable">%&#125;</span></span><br><span class="line"></span><br><span class="line">&#123;% textcolor success <span class="variable">%&#125;</span>Duis mollis, est non commodo luctus, nisi erat porttitor ligula.&#123;% endtextcolor <span class="variable">%&#125;</span></span><br><span class="line"></span><br><span class="line">&#123;% textcolor info <span class="variable">%&#125;</span>Maecenas sed diam eget risus varius blandit sit amet non magna.&#123;% endtextcolor <span class="variable">%&#125;</span></span><br><span class="line"></span><br><span class="line">&#123;% textcolor <span class="keyword">warning</span> <span class="variable">%&#125;</span>Etiam porta sem malesuada magna mollis euismod.&#123;% endtextcolor <span class="variable">%&#125;</span></span><br><span class="line"></span><br><span class="line">&#123;% textcolor danger <span class="variable">%&#125;</span>Donec ullamcorper nulla non metus auctor fringilla.&#123;% endtextcolor <span class="variable">%&#125;</span></span><br></pre></td></tr></table></figure>
+<h3 id="示例">示例</h3><a id="more"></a>
+<figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;% textcolor muted <span class="variable">%&#125;</span>Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.&#123;% endtextcolor <span class="variable">%&#125;</span></span><br><span class="line"></span><br><span class="line">&#123;% textcolor primary <span class="variable">%&#125;</span>Nullam id dolor id nibh ultricies vehicula ut id elit.&#123;% endtextcolor <span class="variable">%&#125;</span></span><br><span class="line"></span><br><span class="line">&#123;% textcolor success <span class="variable">%&#125;</span>Duis mollis, est non commodo luctus, nisi erat porttitor ligula.&#123;% endtextcolor <span class="variable">%&#125;</span></span><br><span class="line"></span><br><span class="line">&#123;% textcolor info <span class="variable">%&#125;</span>Maecenas sed diam eget risus varius blandit sit amet non magna.&#123;% endtextcolor <span class="variable">%&#125;</span></span><br><span class="line"></span><br><span class="line">&#123;% textcolor <span class="keyword">warning</span> <span class="variable">%&#125;</span>Etiam porta sem malesuada magna mollis euismod.&#123;% endtextcolor <span class="variable">%&#125;</span></span><br><span class="line"></span><br><span class="line">&#123;% textcolor danger <span class="variable">%&#125;</span>Donec ullamcorper nulla non metus auctor fringilla.&#123;% endtextcolor <span class="variable">%&#125;</span></span><br></pre></td></tr></table></figure>
 <h3 id="结果">结果</h3><p class="text-muted">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</p>
 
 <p class="text-primary">Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
@@ -169,13 +168,13 @@
 <ul class="pagination">
 	 
 				
-    	<li class="prev"><a href="/2015/11/15/简明Vim练级攻略/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
+    	<li class="prev"><a href="/2015/11/15/简明Vim练级攻略/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>上一頁</a></li>
   		
 
         <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
 
 		
-          <li class="next disabled"><a>Next<i class="fa fa-arrow-circle-o-right"></i></a></li>
+          <li class="next disabled"><a>下一頁<i class="fa fa-arrow-circle-o-right"></i></a></li>
         
 	
 </ul>
@@ -187,7 +186,7 @@
 	<!-- comment -->
 	
 <section id="comment">
-  <h2 class="title">Comments</h2>
+  <h2 class="title">留言</h2>
 
   
   	 <div class="ds-thread" data-thread-key="2014/03/16/tag-plugins-cn/" data-title="Tag Plugins（中文）" data-url="http://coderpan.github.io/2014/03/16/tag-plugins-cn/"></div>  
