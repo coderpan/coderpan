@@ -1,7 +1,7 @@
 title: 简明Vim练级攻略
 date: 2015-11-15 15:36:53
 tags: Vim
-categories: IDE
+categories: Develop Tools
 description: Introduce The Vim Simply !
 feature: vim2.jpg
 toc: true
