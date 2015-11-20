@@ -108,6 +108,35 @@
 	
 	<!-- display as entry -->	
 		<h3 class="title">
+			<div class="date"> 2015-11-20 </div>
+			<div class="article-title"><a href="/2015/11/20/git客户端通过网络代理访问远程仓库/" title="Introduce the proxy setting of git">git客户端设置网络代理</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+           
+  	      <div class="thumbnail"><a href="/2015/11/20/git客户端通过网络代理访问远程仓库/"><img src="2015/11/20/git客户端通过网络代理访问远程仓库/git.jpg" alt="git客户端设置网络代理"  class="nofancybox"></a>
+           
+		</div>
+	
+	
+		<p>本文主要介绍在有网络限制的情况下如何设置代理访问git远程仓库（包括ssh、http/https协议），git相关操作在其它博文中讲解。</p>
+<p>推荐使用SSH协议，因为可以在github网站添加ssh key建立与本地的信任关系，pull/push等操作就不需要输入蛋疼的用户名密码了，当然，如果你喜欢输入密码或者本地SSH被屏蔽，那么就另当别论了。</p>
+<h2 id="使用http/https协议">使用http/https协议</h2><p>使用此协议设置代理比较简单：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global http.proxy http://xxx.com:<span class="number">8080</span></span><br><span class="line">$ git config --global https.proxy http://xxx.com:<span class="number">8080</span></span><br></pre></td></tr></table></figure></p>
+<p>之所以要设置–global，这样才能修改~/.gitconfig，变成全局的，你的每一个branch都会生效。</p>
+	
+	</div>
+  <a type="button" href="/2015/11/20/git客户端通过网络代理访问远程仓库/#more" class="btn btn-default more">阅读更多</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
 			<div class="date"> 2015-11-18 </div>
 			<div class="article-title"><a href="/2015/11/18/Makefile实例解析/" title="Introduce The Makefile Simply !">Makefile实例解析</a></div>						
 		</h3>
@@ -213,6 +242,8 @@
 		
 			<li><a href="/categories/C-C/">C/C++<span>1</span></a></li>
 		
+			<li><a href="/categories/Develop-Tools/">Develop Tools<span>1</span></a></li>
+		
 			<li><a href="/categories/IDE/">IDE<span>1</span></a></li>
 		
 		</ul>
@@ -228,6 +259,8 @@
 		
 			<li><a href="/tags/Makefile/">Makefile<span>1</span></a></li>
 		
+			<li><a href="/tags/Git/">Git<span>1</span></a></li>
+		
 		 
 		</ul>
 	</div>
@@ -238,6 +271,10 @@
 <div class="widget">
   <h4>最新文章</h4>
   <ul class="entry list-unstyled">
+    
+      <li>
+        <a href="/2015/11/20/git客户端通过网络代理访问远程仓库/"  title="Introduce the proxy setting of git" ><i class="fa fa-file-o"></i>git客户端设置网络代理...</a>
+      </li>
     
       <li>
         <a href="/2015/11/18/Makefile实例解析/"  title="Introduce The Makefile Simply !" ><i class="fa fa-file-o"></i>Makefile实例解析...</a>
