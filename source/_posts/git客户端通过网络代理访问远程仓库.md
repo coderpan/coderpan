@@ -23,10 +23,9 @@ $ git config --global https.proxy http://xxx.com:8080
 ## 使用ssh协议 ##
 首先要建立本地ssh-agent与github的信任关系，这个时候就需要ssh key了，也就是ssh公钥，具体步骤如下：
 
-### Windows环境 ###
 以我自己为例，使用的是git Bash（MINGW64）:
 
-#### 生成ssh key ####
+### 生成ssh key ###
 ```Bash
 $ cd ~/.ssh   #如果没有此目录，手动创建
 $ ssh-keygen  #执行生成密钥，过程中会让你选择密钥存放目录以及输入两次密码，如果不设密码，连续按三次Enter即可
@@ -45,7 +44,7 @@ $ ssh-add ~/.ssh/id_rsa
 ![](git2.png)
 接下来的步骤相信大家都可以完成了。
 
-#### 设置ssh代理 ####
+### 设置ssh代理 ###
 接下来就是设置代理的关键一步了，当然如果网络没有限制的同学就可以不用凑热闹了：
 在~/.ssh/下面新建一个config文件，vim ~/.ssh/config编辑：
 ```Bash
