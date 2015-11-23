@@ -96,22 +96,17 @@
 
 
 
-<div class="row post">
+<div class="row page">
 	<!-- cols -->
-	
 	<div id="top_meta"></div>
 	<div class="col-md-9">
+
+	<div class="entry">
+  <div class="row">
 	
-
-	<!-- content -->
-	<div class="mypage">		
-	  <!-- % if (item.description) { % -->
-		 <!-- div class="alert alert-success description" -->
-			<!-- i class="fa fa-info-circle"></i --> <!-- %- markdown(item.description) % -->
-		 <!-- /div --> <!-- alert -->
-	  <!-- % } % -->		
-
-	  <p>对于从事linux下C++开发的同学来说，makefile方面的知识是必不可少的。本文将选取一个实例来讲解makefile的运用方法,可能存在一些错误的地方，希望看到的同学批评指正，也借此抛砖引玉了：</p>
+              <div class="thumbnail"><a href=""><img src="Makefile.jpg" alt="Makefile实例解析"  class="nofancybox"></a></div>
+	
+	<p>对于从事linux下C++开发的同学来说，makefile方面的知识是必不可少的。本文将选取一个实例来讲解makefile的运用方法,可能存在一些错误的地方，希望看到的同学批评指正，也借此抛砖引玉了：</p>
 <p>一般来说，一个项目的后台服务部门至少包含一个公共的makefile文件，其中包含平台属性定义（比如32位/64位的判断等）、公共库目录（公共动态库、静态库的头文件目录、.o/.so文件生成目录等）、通用操作定义（all、clean、release等）…</p>
 <blockquote>
 <p class="text-info">本文适合对 Makefile 接触不多的同学阅读，其中涉及到的知识面比较窄，后面会慢慢完善！</p>
@@ -122,8 +117,10 @@
 <h2 id="子服务_Makefile">子服务 Makefile</h2><p>上面讲完公共makefile之后，这里将附上子服务的makefile，看是如何引用公共makefile的，<br>这样分开之后的好处不言而喻，每增加一个子服务只需要在外层makefile定义一些独有的变量即可：</p>
 <figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#include相当于把公共makefile拷贝一份放到这里，先定义这些变量再include公共makefile，</span></span><br><span class="line"><span class="comment">#定制子服务独有的makefile</span></span><br><span class="line"><span class="constant">APP</span>            := LEARNING</span><br><span class="line"><span class="constant">TOPDIR</span>         := ../..</span><br><span class="line"></span><br><span class="line"><span class="comment">#编译要用的静态库</span></span><br><span class="line"><span class="constant">INCLUDE</span> +=</span><br><span class="line"><span class="constant">LIB</span>     += -lutil</span><br><span class="line"></span><br><span class="line"><span class="constant">TARGET</span> := test</span><br><span class="line"></span><br><span class="line">include $&#123;TOPDIR&#125;/makefile</span><br></pre></td></tr></table></figure>
 <font color="#ff0000" size="4" face="黑体"><br>转载本站文章请注明作者和出处 <u><strong>码畔-coderpan</strong></u>，请勿用于任何商业用途<br></font>
-	  
+
 	</div>
+</div>
+
 
 	<div>
   	<center>
@@ -162,6 +159,16 @@
 	
 	<div id="side_meta">
 		<div class="col-md-3" id="post_meta"> 
+	<!-- search box -->
+	
+  <div id="site_search">
+   <div class="form-group">
+    <input type="text" id="local-search-input" name="q" results="0" placeholder="搜索" class="st-search-input st-default-search-input form-control"/>
+   </div>  
+  <div id="local-search-result"></div>
+  </div>
+
+
 
 	<!-- date -->
 	
@@ -204,6 +211,45 @@
 			<ol class="toc-article"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#公共_Makefile"><span class="toc-article-text">公共 Makefile</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#子服务_Makefile"><span class="toc-article-text">子服务 Makefile</span></a></li></ol>
 		</div>
 	
+
+	</br>
+	
+<div class="widget">
+  <h4>最新文章</h4>
+  <ul class="entry list-unstyled">
+    
+      <li>
+        <a href="/2015/11/20/git客户端通过网络代理访问远程仓库/"  title="Introduce the proxy setting of git" ><i class="fa fa-file-o"></i>git客户端设置网络代理...</a>
+      </li>
+    
+      <li>
+        <a href="/2015/11/18/Makefile实例解析/"  title="Introduce The Makefile Simply !" ><i class="fa fa-file-o"></i>Makefile实例解析...</a>
+      </li>
+    
+      <li>
+        <a href="/2015/11/15/简明Vim练级攻略/"  title="Introduce The Vim Simply !" ><i class="fa fa-file-o"></i>简明Vim练级攻略...</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+	
+<div class="widget">
+	<h4>链接</h4>
+	<ul class="blogroll list-unstyled">
+	
+		<li><i class="fa fa-github"></i><a href="https://github.com/coderpan/hexo-theme-freemind.git" title="Freemind's Github repository." target="_blank"]);">Freemind</a></li>
+	
+		<li><i class="fa fa-github"></i><a href="http://www.github.com/coderpan" title="My Github account." target="_blank"]);">My Github</a></li>
+	
+		<li><i class="fa fa-linkedin"></i><a href="https://www.linkedin.com/in/coderpan" title="My Linkin account." target="_blank"]);">My LinkedIn</a></li>
+	
+	</ul>
+</div>
+
+
+
 	</div>
 	
     <hr>
