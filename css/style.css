@@ -400,12 +400,14 @@ h4 {
 .page .entry{
   padding-top: 10px 0;
 }
+.page .entry2{
+  padding-top: 10px 0;
+}
 
 .page .entry .row{
   padding-left: 20px;
   padding-right: 5px;
 }
-
 .page .entry2 .row{
   padding-left: 20px;
   padding-right: 5px;
@@ -423,7 +425,6 @@ h4 {
 .page .entry .col-md-8{
   margin: 10px 0;
 }
-
 .page .entry2 .col-md-8{
   margin: 10px 0;
 }
@@ -431,7 +432,6 @@ h4 {
 .page .entry .thumbnail{
   margin: 10px;
 }
-
 .page .entry2 .thumbnail{
   margin: 10px;
 }
