@@ -1,4 +1,4 @@
-/* =============================================================================
+﻿/* =============================================================================
    container
    ========================================================================== */
 
@@ -406,33 +406,19 @@ h4 {
   padding-right: 5px;
 }
 
-.page .entry2 .row{
-  padding-left: 20px;
-  padding-right: 5px;
-}
-
 .page .entry h2{
-  display:block; overflow: hidden; width: 0; height: 0;
-  margin: -20px 0;
+  display:block; 
 }
 
 .page .entry h3{
-  display:block; overflow: hidden; width: 0; height: 0;
+  display:block;
 }
 
 .page .entry .col-md-8{
   margin: 10px 0;
 }
 
-.page .entry2 .col-md-8{
-  margin: 10px 0;
-}
-
 .page .entry .thumbnail{
-  margin: 10px;
-}
-
-.page .entry2 .thumbnail{
   margin: 10px;
 }
 
