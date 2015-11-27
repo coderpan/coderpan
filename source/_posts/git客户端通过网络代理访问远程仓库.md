@@ -12,6 +12,7 @@ toc: true
 推荐使用SSH协议，因为可以在github网站添加ssh key建立与本地的信任关系，pull/push等操作就不需要输入蛋疼的用户名密码了，当然，如果你喜欢输入密码或者本地SSH被屏蔽，那么就另当别论了。
 
 ## 使用http/https协议 ##
+
 使用此协议设置代理比较简单：
 ```Bash
 $ git config --global http.proxy http://xxx.com:8080
