@@ -3,15 +3,15 @@
 <head>
   <meta charset="utf-8">
   
-  <title>码畔 - Coderpan</title>
+  <title>nohup &amp;与daemon进程 | 码畔 - Coderpan</title>
   <meta name="author" content="Coderpan">
   
-  <meta name="description" content="码畔 - Coderpan">
+  <meta name="description" content="Introduce nohup &amp; daemon">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
+  <meta property="og:title" content="nohup &amp;与daemon进程"/>
   <meta property="og:site_name" content="码畔 - Coderpan"/>
 
   
@@ -85,45 +85,28 @@
 
   <div class="container">
   	<div class="content">
-    	 <div class="page-header">
-  <h1>码畔 - Coderpan</h1>
-</div>
+    	 
+
+
+	
+		<div class="page-header">		
+			<h1> nohup &amp;与daemon进程</h1>
+		</div>		
+	
+
+
 
 <div class="row page">
-
-	
+	<!-- cols -->
+	<div id="top_meta"></div>
 	<div class="col-md-9">
-	
 
-		<div class="slogan">
-      <i class="fa fa-heart"></i>
-      Sharing makes me happy !
-</div>    
-		<div id="top_search"></div>
-		<div class="mypage">
-		
-		<!-- title and entry -->
-		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2015-12-09 </div>
-			<div class="article-title"><a href="/2015/12/09/nohup-与daemon进程/" title="Introduce nohup &amp; daemon">nohup &amp;与daemon进程</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
+	<div class="entry2">
   <div class="row">
 	
-           
-  	      <div class="thumbnail"><a href="/2015/12/09/nohup-与daemon进程/"><img src="2015/12/09/nohup-与daemon进程/nohup.jpg" alt="nohup &amp;与daemon进程"  class="nofancybox"></a>
-           
-		</div>
+              <div class="thumbnail"><a href=""><img src="nohup.jpg" alt="nohup &amp;与daemon进程"  class="nofancybox"></a></div>
 	
-	
-		<p>我们先来了解下后台进程的定义，顾名思义，在后台运行的进程，那么什么叫前台进程呢？<br>举个例子：在Terminal运行./command -arg1=xxx，在进程没有结束之前，终端都挂起，不能<br>做其它的事情，这样的进程我理解为前台进程，对应的在后面加一个‘&amp;’（./command -arg1=xxx &amp;）<br>也就是后台进程了，暂时先介绍到这里。</p>
+	<p>我们先来了解下后台进程的定义，顾名思义，在后台运行的进程，那么什么叫前台进程呢？<br>举个例子：在Terminal运行./command -arg1=xxx，在进程没有结束之前，终端都挂起，不能<br>做其它的事情，这样的进程我理解为前台进程，对应的在后面加一个‘&amp;’（./command -arg1=xxx &amp;）<br>也就是后台进程了，暂时先介绍到这里。</p>
 <h2 id="前台进程">前台进程</h2><p>在terminal运行前台进程，也就是父进程terminal进程fork了一个子进程，terminal进程等待，待子进程<br>执行结束，向父进程发出SIGCHLD信号，唤醒父进程，由于子进程共享父进程的文件描述符stdin、stdout、stderr，<br>所以在子进程的执行过程中，终端可以接受子进程的输出，子进程也可以接受terminal的输入，但是一旦<br>terminal进程退出，比如关闭ssh窗口呢，子进程就会被迫终止，原因是terminal进程退出时会发送SIGHUP信号<br>给所有子进程，子进程终止，解决这个问题，我们想到了后台进程。</p>
 <h2 id="后台进程">后台进程</h2><p>前台进程会导致terminal挂起，必须等待子进程结束，那么我们可以在命令后面加上‘&amp;’，<br>./command -arg1=xxx &amp;<br>这样子进程就变成后台进程了，终端没有wait，而是继续执行其它命令，但是这样并不能解决ssh窗口关闭时<br>子进程终止的问题，你可以尝试一下，为了解决这个问题，引入了nohup，顾名思义（no hup），没有SIGHUP信号，<br>也就是加了nohup之后，fork出来的子进程忽略了SIGHUP信号（系统调用signal就可以做到）：<br>nohup ./command -arg1=xxx &amp;<br>子进程的输出默认会在当前目录的nohup.out，如果不可写，会写在$HOME/nohup.out。<br>此时，ssh窗口的关闭，或者当前用户的退出都不会影响子进程的运行，该进程会由init进程接管。</p>
 <h2 id="daemon进程">daemon进程</h2><p>也就是守护进程，又称精灵进程。这也是一种后台进程，一般系统服务都是守护进程，比如0号进程（系统调度进程）、<br>1号进程（init进程）等都是守护进程，这是一种完全脱离中终端控制的进程，那么问题来了，为什么不用<br>nohup+&amp;呢？咱们先从daemon进程的实现说起：<br>其实，linux已经提供了一个api可以将进程变成守护进程，可以参考：<a href="http://man7.org/linux/man-pages/man3/daemon.3.html" target="_blank" rel="external">http://man7.org/linux/man-pages/man3/daemon.3.html</a></p>
@@ -137,134 +120,49 @@
 <p>综上所述，个人认为与具体业务有关的进程使用nohup足矣，<br>需要开机自启动、与系统或者工程基础架构有关、需要长期运行对稳定性要求高的程序，<br>可以做成守护进程，比如异步日志组件的监控等之类的监控进程。</p>
 <p>有关linux会话、进程组等知识，可以参考下《unix环境高级编程》。</p>
 
-	
 	</div>
-  <a type="button" href="/2015/12/09/nohup-与daemon进程/#more" class="btn btn-default more">阅读更多</a>
 </div>
 
-		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2015-11-20 </div>
-			<div class="article-title"><a href="/2015/11/20/git客户端通过网络代理访问远程仓库/" title="Introduce the proxy setting of git">git客户端设置网络代理</a></div>						
-		</h3>
-	
 
-
-			<div class="entry">
-  <div class="row">
-	
-           
-  	      <div class="thumbnail"><a href="/2015/11/20/git客户端通过网络代理访问远程仓库/"><img src="2015/11/20/git客户端通过网络代理访问远程仓库/git.jpg" alt="git客户端设置网络代理"  class="nofancybox"></a>
-           
-		</div>
-	
-	
-		<p>本文主要介绍在有网络限制的情况下如何设置代理访问git远程仓库（包括ssh、http/https协议），git相关操作在其它博文中讲解。</p>
-<p>推荐使用SSH协议，因为可以在github网站添加ssh key建立与本地的信任关系，pull/push等操作就不需要输入蛋疼的用户名密码了，当然，如果你喜欢输入密码或者本地SSH被屏蔽，那么就另当别论了。</p>
-<h2 id="使用http/https协议">使用http/https协议</h2><p>使用此协议设置代理比较简单：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global http.proxy http://xxx.com:<span class="number">8080</span></span><br><span class="line">$ git config --global https.proxy http://xxx.com:<span class="number">8080</span></span><br></pre></td></tr></table></figure></p>
-<p>之所以要设置–global，这样才能修改~/.gitconfig，变成全局的，你的每一个branch都会生效。</p>
-	
-	</div>
-  <a type="button" href="/2015/11/20/git客户端通过网络代理访问远程仓库/#more" class="btn btn-default more">阅读更多</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2015-11-18 </div>
-			<div class="article-title"><a href="/2015/11/18/Makefile实例解析/" title="Introduce The Makefile Simply !">Makefile实例解析</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-           
-  	      <div class="thumbnail"><a href="/2015/11/18/Makefile实例解析/"><img src="2015/11/18/Makefile实例解析/Makefile.jpg" alt="Makefile实例解析"  class="nofancybox"></a>
-           
-		</div>
-	
-	
-		<p>对于从事linux下C++开发的同学来说，makefile方面的知识是必不可少的。本文将选取一个实例来讲解makefile的运用方法,可能存在一些错误的地方，希望看到的同学批评指正，也借此抛砖引玉了：</p>
-<p>一般来说，一个项目的后台服务部门至少包含一个公共的makefile文件，其中包含平台属性定义（比如32位/64位的判断等）、公共库目录（公共动态库、静态库的头文件目录、.o/.so文件生成目录等）、通用操作定义（all、clean、release等）…</p>
-<blockquote>
-<p class="text-info">本文适合对 Makefile 接触不多的同学阅读，其中涉及到的知识面比较窄，后面会慢慢完善！</p>
-</blockquote>
-<h2 id="公共_Makefile">公共 Makefile</h2><p>以下是我选取的项目公共makefile文件，讲述将以注释的形式穿插在代码中，过程中会顺带讲些与makefile相关的内容：</p>
-	
-	</div>
-  <a type="button" href="/2015/11/18/Makefile实例解析/#more" class="btn btn-default more">阅读更多</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2015-11-15 </div>
-			<div class="article-title"><a href="/2015/11/15/简明Vim练级攻略/" title="Introduce The Vim Simply !">简明Vim练级攻略</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-           
-  	      <div class="thumbnail"><a href="/2015/11/15/简明Vim练级攻略/"><img src="2015/11/15/简明Vim练级攻略/vim2.jpg" alt="简明Vim练级攻略"  class="nofancybox"></a>
-           
-		</div>
-	
-	
-		<p>你想以最快的速度学习人类史上最好的文本编辑器VIM吗？你先得懂得如何在VIM幸存下来，然后一点一点地学习各种戏法。<br><a href="http://www.vim.org/">Vim</a> the Six Billion Dollar editor</p>
-<blockquote>
-<p class="text-info">Better, Stronger, Faster.</p>
-</blockquote>
-<p>学习 vim 并且其会成为你最后一个使用的文本编辑器。没有比这个更好的文本编辑器了，非常地难学，但是却不可思议地好用。</p>
-<p>我建议下面这四个步骤：</p>
-<ol>
-<li>存活</li>
-<li>感觉良好</li>
-<li>觉得更好，更强，更快</li>
-<li>使用VIM的超能力</li>
-</ol>
-<p>当你走完这篇文章，你会成为一个vim的 superstar。</p>
-	
-	</div>
-  <a type="button" href="/2015/11/15/简明Vim练级攻略/#more" class="btn btn-default more">阅读更多</a>
-</div>
-
-		
-
-		</div>
-
-		<!-- pagination -->
-		<div>
-  		<center>
-		<div class="pagination">
+	<div>
+  	<center>
+	<div class="pagination">
 <ul class="pagination">
 	 
+		
+          <li class="prev disabled"><a><i class="fa fa-arrow-circle-o-left"></i>上一页</a></li>
+        
+
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/2015/11/20/git客户端通过网络代理访问远程仓库/" class="alignright next">下一页<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
 </ul>
 </div>
 
-  		</center>
-		</div>
-
-		
-		
-	</div> <!-- col-md-9 -->
-
+    </center>
+	</div>
 	
-		<div class="col-md-3">
-	<div id="sidebar">
+	<!-- comment -->
 	
-			
+<section id="comment">
+  <h2 class="title">留言</h2>
+
+  
+  	 <div class="ds-thread" data-thread-key="2015/12/09/nohup-与daemon进程/" data-title="nohup &与daemon进程" data-url="http://coderpan.github.io/2015/12/09/nohup-与daemon进程/"></div>  
+  
+</section>
+
+
+	</div> <!-- col-md-9/col-md-12 -->
+		
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+	<!-- search box -->
+	
   <div id="site_search">
    <div class="form-group">
     <input type="text" id="local-search-input" name="q" results="0" placeholder="搜索" class="st-search-input st-default-search-input form-control"/>
@@ -273,42 +171,51 @@
   </div>
 
 
-		
-			
-	<div class="widget">
-		<h4>分类</h4>
-		<ul class="tag_box inline list-unstyled">
-		
-			<li><a href="/categories/C-C/">C/C++<span>1</span></a></li>
-		
-			<li><a href="/categories/Develop-Tools/">Develop Tools<span>2</span></a></li>
-		
-			<li><a href="/categories/Linux-Unix/">Linux/Unix<span>1</span></a></li>
-		
-		</ul>
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2015-12-09 
 	</div>
+	
 
-		
-			
-	<div class="widget">
-		<h4>标签云</h4>
-		<ul class="tag_box inline list-unstyled">		
-		
-			<li><a href="/tags/Git/">Git<span>1</span></a></li>
-		
-			<li><a href="/tags/Vim/">Vim<span>1</span></a></li>
-		
-			<li><a href="/tags/Makefile/">Makefile<span>1</span></a></li>
-		
-			<li><a href="/tags/Linux/">Linux<span>1</span></a></li>
-		
-		 
-		</ul>
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/categories/Linux-Unix/">Linux/Unix<span>1</span></a></li>
+  </li>
+
+    </ul>
 	</div>
+	
 
-
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/Linux/">Linux<span>1</span></a></li>
+    </ul>
+	</div>
 		
-			
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	   <a data-toggle="collapse" data-target="#toc"><i class="fa fa-bars"></i></a>
+	   <div id="toc" class="toc collapse in">
+			<ol class="toc-article"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#前台进程"><span class="toc-article-text">前台进程</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#后台进程"><span class="toc-article-text">后台进程</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#daemon进程"><span class="toc-article-text">daemon进程</span></a></li></ol>
+		</div>
+	
+
+	</br>
+	
 <div class="widget">
   <h4>最新文章</h4>
   <ul class="entry list-unstyled">
@@ -332,8 +239,8 @@
   </ul>
 </div>
 
-		
-			
+
+	
 <div class="widget">
 	<h4>链接</h4>
 	<ul class="blogroll list-unstyled">
@@ -348,13 +255,32 @@
 </div>
 
 
-		
-	</div> <!-- sidebar -->
-</div> <!-- col-md-3 -->
 
+	</div>
 	
+    <hr>
 	
-</div> <!-- row-fluid -->
+</div><!-- col-md-3 -->
+
+	</div>
+		
+
+</div><!-- row -->
+
+<script type="text/javascript">
+  var duoshuoQuery = { short_name: 'coderpan' };
+  (function() {
+   var ds = document.createElement('script');
+   ds.type = 'text/javascript';ds.async = true;
+   ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+   ds.charset = 'UTF-8';
+   (document.getElementsByTagName('head')[0] 
+	|| document.getElementsByTagName('body')[0]).appendChild(ds);
+   })();
+</script>
+
+
+
 	</div>
   </div>
   <div class="container-narrow">
